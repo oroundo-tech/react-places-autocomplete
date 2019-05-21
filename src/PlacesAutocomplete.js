@@ -43,6 +43,9 @@ class PlacesAutocomplete extends React.Component {
     } else {
       this.init();
     }
+    if (this.props.getFetchPredictionsRef) {
+      this.props.getFetchPredictionsRef(this.fetchPredictions);
+    }
   }
 
   componentWillUnmount() {
@@ -370,7 +373,7 @@ PlacesAutocomplete.propTypes = {
   children: PropTypes.func.isRequired,
   onError: PropTypes.func,
   onSelect: PropTypes.func,
-  triggerFetchPredictions: PropTypes.func,
+  getFetchPredictionsRef: PropTypes.func,
   searchOptions: PropTypes.shape({
     bounds: PropTypes.object,
     componentRestrictions: PropTypes.object,
